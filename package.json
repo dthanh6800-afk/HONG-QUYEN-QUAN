@@ -1,0 +1,40 @@
+{
+  "name": "hong-quyen-tea",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build",
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "db:setup": "node --env-file-if-exists=.env scripts/setup.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:e2e": "node --env-file=.env node_modules/@playwright/test/cli.js test",
+    "test:integration": "node --env-file=.env scripts/integration.mjs",
+    "format": "prettier --write src shared server scripts tests *.js *.json *.html *.yaml README.md",
+    "format:check": "prettier --check src shared server scripts tests *.js *.json *.html *.yaml README.md",
+    "duplicates": "jscpd --min-lines 8 --min-tokens 90 --threshold 0 src server shared --reporters console",
+    "check": "eslint .",
+    "db:local": "node scripts/local-db.mjs"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.468.0",
+    "pg": "^8.16.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.55.0",
+    "embedded-postgres": "18.4.0-beta.17",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0",
+    "jscpd": "^4.0.5",
+    "prettier": "^3.9.6",
+    "vite": "^7.1.0"
+  }
+}

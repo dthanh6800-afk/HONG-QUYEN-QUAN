@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.tools/
+.postgres/
+test-results/
+playwright-report/
+*.log
