@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: hong-quyen-quan
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    initialDeployHook: npm run db:setup
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hong-quyen-db
+          property: connectionString
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+
+databases:
+  - name: hong-quyen-db
+    databaseName: tea
+    user: tea
+    plan: free
+    region: singapore
